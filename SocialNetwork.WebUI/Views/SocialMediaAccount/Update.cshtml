@@ -1,0 +1,43 @@
+﻿@model SocialMediaAccount
+
+@{
+    ViewData["Title"] = " Hesap Düzenle";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body table-responsive p-2">
+                    <form asp-controller="SocialMediaAccount" asp-action="Update" method="post">
+                        <div class="form-group">
+                            <label asp-for="SocialMediaName"></label>
+                            <select class="form-control" asp-for="SocialMediaName">
+                                <option value="Facebook">Facebook</option>
+                                <option value="Twitter">Twitter</option>
+                                <option value="İnstagram">İnstagram</option>
+                                <option value="LinkedIn">LinkedIn</option>
+                                <option value="Youtube">Youtube</option>
+                            </select>
+                            <span asp-validation-for="SocialMediaName"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Username"></label>
+                            <input asp-for="Username" class="form-control" />
+                            <span asp-validation-for="Username"></span>
+                        </div>
+                        @*<div class="form-group">
+                            <label asp-for="Token"></label>
+                            <input asp-for="Token" class="form-control" />
+                            <span asp-validation-for="Token"></span>
+                        </div>*@
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Güncelle</button>
+                            <a class="btn btn-danger float-right" asp-action="Index">Geri Dön</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

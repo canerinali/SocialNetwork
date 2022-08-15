@@ -1,0 +1,43 @@
+﻿@model List<SocialMediaAccount>
+
+@{
+    ViewData["Title"] = " Hesaplar";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body table-responsive p-2">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model[0].CreateDate)</th>
+                                <th>@Html.DisplayNameFor(model => model[0].SocialMediaName)</th>
+                                <th>@Html.DisplayNameFor(model => model[0].Username)</th>
+                                @*<th>@Html.DisplayNameFor(model => model[0].Token)</th>*@
+                                <th>
+                                    <a asp-action="Create" type="button" class="btn btn-success col-md-5">Ekle</a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var socialMedia in (List<SocialMediaAccount>)Model)
+                            {
+                                <tr>
+                                    <td>@socialMedia.CreateDate.ToShortDateString()</td>
+                                    <td>@socialMedia.SocialMediaName</td>
+                                    <td>@socialMedia.Username</td>
+                                    @*<td>@socialMedia.Token</td>*@
+                                    <td>
+                                        <a type="button" asp-action="Delete" asp-route-id="@socialMedia.Id" class="btn btn-danger col-md-5">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

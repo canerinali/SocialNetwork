@@ -1,0 +1,55 @@
+﻿@model SocialMediaAccount
+
+@{
+    ViewData["Title"] = " Hesap Ekle";
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body table-responsive p-2">
+                    <div class="form-group">
+                        <label asp-for="SocialMediaName"></label>
+                        <select class="form-control" asp-for="SocialMediaName" id="SocialMedia">
+                            <option value="Facebook">Facebook</option>
+                            <option value="Twitter">Twitter</option>
+                            <option value="İnstagram">İnstagram</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="Youtube">Youtube</option>
+                        </select>
+                        <span asp-validation-for="SocialMediaName"></span>
+                    </div>
+                    <button class="btn btn-primary" id="save">Kaydet</button>
+                    <a class="btn btn-danger float-right" asp-action="Index">Geri Dön</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $("#save").click(function () {
+        var socialmedia = $("#SocialMedia").val();
+        switch (socialmedia) {
+            case "LinkedIn":
+                window.location.href = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78iyhahi3hob5p&redirect_uri=https%3A%2F%2Flocalhost%3A44316%2FLinkedin%2FLinkedinToken&state=foobar&scope=r_liteprofile%20r_emailaddress%20w_member_social"
+                break;
+            case "Facebook":
+                window.location.href = "https://www.facebook.com/v6.0/dialog/oauth?client_id=698031151184178&redirect_uri=https%3A%2F%2Flocalhost%3A44316%2FFacebook%2FFacebookToken&scope=ads_management%20pages_read_engagement%20pages_manage_posts"
+                break;
+            case "Twitter":
+                break;
+            case "İnstagram":
+                break;
+            case "Youtube":
+                break;
+            default:
+                break;
+        }
+    })
+</script>

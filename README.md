@@ -1,2 +1,2 @@
 # SocialNetwork
- SocialNetwork
+ Social Network Management Project

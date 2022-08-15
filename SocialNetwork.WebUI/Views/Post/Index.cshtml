@@ -1,0 +1,44 @@
+﻿@model List<Post>
+
+@{
+    ViewData["Title"] = " Hesaplar";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body table-responsive p-2">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model[0].CreateDate)</th>
+                                <th>@Html.DisplayNameFor(model => model[0].Title)</th>
+                                <th>@Html.DisplayNameFor(model => model[0].Text)</th>
+                                @*<th>@Html.DisplayNameFor(model => model[0].Token)</th>*@
+                                <th>
+                                    <a asp-action="Create" type="button" class="btn btn-success col-md-5">Ekle</a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var post in (List<Post>)Model)
+                            {
+                                <tr>
+                                    <td>@post.CreateDate.ToShortDateString()</td>
+                                    <td>@post.Title</td>
+                                    <td>@post.Text</td>
+                                    @*<td>@post.Token</td>*@
+                                    <td>
+                                        <a type="button" asp-action="Update" asp-route-id="@post.Id" class="btn btn-info col-md-3">Güncelle</a>
+                                        <a type="button" asp-action="Delete" asp-route-id="@post.Id" class="btn btn-danger col-md-2">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

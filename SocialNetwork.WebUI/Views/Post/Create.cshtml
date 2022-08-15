@@ -1,0 +1,67 @@
+﻿@model SocialNetwork.WebUI.ViewModel.PostInfo
+
+@{
+    ViewData["Title"] = " Post Oluştur";
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body table-responsive p-2">
+                    <form asp-controller="Facebook" asp-action="FacebookPost" method="post">
+                        @*<div class="form-group">
+                                <label asp-for="SocialMediaAccount"></label>
+                                <select class="form-control" asp-for="SocialMediaAccount">
+                                    <option value="Facebook">Facebook</option>
+                                    <option value="Linkedin">Linkedin</option>
+                                </select>
+                                <span asp-validation-for="SocialMediaAccount"></span>
+                            </div>*@
+
+                        <div class="form-group">
+                            <label asp-for="Posts.SocialMediaAccount.Id"></label>
+                            <select class="form-control" asp-for="Posts.SocialMediaAccount.Id">
+                                <option value="">Seciniz</option>
+                                @foreach (var item in ViewData["SocialMediaAccounts"] as List<SocialMediaAccount>)
+                                {
+                                    <option value="@item.Id">@item.Username-@item.SocialMediaName</option>
+                                }
+
+                            </select>
+                            <span asp-validation-for="Posts.SocialMediaAccount.Id"></span>
+                        </div>
+
+                        @*<div class="form-group">
+                                @Html.LabelFor(model => model.SocialMediaAccount.Id, "Username", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("FirmaId", null, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                            </div>*@
+                        <div class="form-group">
+                            <label asp-for="Posts.Title"></label>
+                            <input asp-for="Posts.Title" class="form-control" />
+                            <span asp-validation-for="Posts.Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Posts.Text"></label>
+                            <textarea asp-for="Posts.Text" class="form-control" rows="4"></textarea>
+                            <span asp-validation-for="Posts.Text"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Posts.TaskDate"></label>
+                            <input asp-for="Posts.TaskDate" type="datetime-local" class="form-control"
+                                   value="2022-01-01T00:00" min="2022-01-01T00:00" max="2026-01-01T00:00">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                        <a class="btn btn-danger float-right" asp-action="Index">Geri Dön</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

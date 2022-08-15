@@ -1,0 +1,47 @@
+﻿@model Post
+
+@{
+    ViewData["Title"] = " Post Güncelle";
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body table-responsive p-2">
+                    <form asp-controller="Post" asp-action="Update" method="post">
+                        <div class="form-group">
+                            <label asp-for="SocialMediaAccount"></label>
+                            <select class="form-control" asp-for="SocialMediaAccount">
+                                <option value="Facebook">Facebook</option>
+                            </select>
+                            <span asp-validation-for="SocialMediaAccount"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Title"></label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Text"></label>
+                            <textarea asp-for="Text" class="form-control" rows="4"></textarea>
+                            <span asp-validation-for="Text"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TaskDate"></label>
+                            <input asp-for="TaskDate" type="datetime-local" class="form-control"
+                                   value="2022-01-01T00:00" min="2022-01-01T00:00" max="2026-01-01T00:00">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                        <button class="btn btn-primary">Paylaş</button>
+                        <a class="btn btn-danger float-right" asp-action="Index">Geri Dön</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
